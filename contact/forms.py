@@ -13,9 +13,9 @@ class ContactForm(forms.Form):
                 render_to_string("email.txt", {
                         'data': self.cleaned_data,
                 }),
-                self.cleaned_data['email'],
+                site_email,
                 [site_email],
                 headers = {
-                        'Reply-To': self.cleaned_data['email']
+                        'Reply-To': self.cleaned_data['email'],
                 },)
         email_message.send(fail_silently=True)
